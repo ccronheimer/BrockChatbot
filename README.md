@@ -19,3 +19,7 @@ Ryan Lemasters\
 Eric Woroch\
 Cameron Cronheimer\
 William Gullett
+
+## Project Management 
+
+https://trello.com/b/LOLmVOsW/chatbot
