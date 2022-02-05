@@ -72,3 +72,4 @@ if __name__ == "__main__":
 
     #schedule = scrapeSchedule_niagaragames()
     #print(schedule)
+    pass
