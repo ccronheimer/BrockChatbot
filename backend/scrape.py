@@ -1,5 +1,8 @@
 import requests,sys
 from bs4 import BeautifulSoup
+import pathlib
+
+WORKING_DIRECTORY = str(pathlib.Path().resolve())
 
 
 def url2Soup(url):
@@ -25,7 +28,7 @@ def remove_indices(table, begin, end):
 
 if __name__ == "__main__":
     #soup = url2Soup("https://cg2019.gems.pro/Result/ShowPerson_List.aspx?SetLanguage=en-CA")
-    soup = file2Soup("C:\\Users\\Yujie\\OneDrive\\Desktop\\Computer Science\\COSC 4P02\\BrockChatbot\\backend\\allAthletes.htm")
+    soup = file2Soup(WORKING_DIRECTORY+"\\backend\\allAthletes.htm")
     tables = soup.find_all('table')
     athlete_and_sports_table = tables[2]
 

@@ -1,6 +1,8 @@
 import requests,sys
 from bs4 import BeautifulSoup
+import pathlib
 
+WORKING_DIRECTORY = str(pathlib.Path().resolve())
 
 def url2Soup(url):
     page = requests.get(url)
@@ -16,7 +18,7 @@ def removeUnicodeSpace(list):
 
 if __name__ == "__main__":
     #soup = url2Soup("https://niagara2022games.ca/sports/#Athletics")
-    soup = file2Soup("F:\\Cosc 4p02\\BrockChatbot\\backend\\athletes.htm")
+    soup = file2Soup(WORKING_DIRECTORY+"\\backend\\athletes.htm")
     table = soup.find("div",{'class':"col-sm-12 col-lg-9"}) 
     #table = soup.find("article") 
     #Athletes = list(table.descendants)
