@@ -16,12 +16,14 @@ def removeUnicodeSpace(list):
 
 if __name__ == "__main__":
     #soup = url2Soup("https://cg2019.gems.pro/Result/ShowPerson_List.aspx?SetLanguage=en-CA")
-    soup = file2Soup("C:\\Users\\Yujie\\OneDrive\\Desktop\\Computer Science\\COSC 4P02\\BrockChatbot\\backend\\schedule.htm")
+    soup = file2Soup("F:\\Cosc 4p02\\BrockChatbot\\backend\\schedule.htm")
     table = soup.find('tbody', id = "ctl00_ctl00_ContentPlaceHolderBasicMaster_ContentPlaceHolder1_secGroup1_1_secGroup1_1_SectionContent") 
 
-
     schedual = [i.get_text() for i in table.find_all("tr")]
-    schedual = [i.replace("\n","") for i in schedual]
-
-    schedual = removeUnicodeSpace(schedual)
+    stringSchedual="".join(schedual)
+    schedual= stringSchedual.split("\n")
+    schedual = [i for i in schedual if i]
+    #schedual = [i.replace("\n"," ") for i in schedual]
+    #schedual = [i.replace("|","") for i in schedual]
+    #schedual = [i.replace("-","") for i in schedual]
     print(schedual)
