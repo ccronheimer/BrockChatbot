@@ -1,3 +1,4 @@
+import sched
 import requests,sys
 from bs4 import BeautifulSoup
 import pathlib
@@ -26,8 +27,7 @@ def remove_indices(table, begin, end):
     del table [begin:end]
     return None
 
-if __name__ == "__main__":
-    #soup = url2Soup("https://cg2019.gems.pro/Result/ShowPerson_List.aspx?SetLanguage=en-CA")
+def scrapeAthleteData_gemspro(filename="allAthletes.htm"):
     soup = file2Soup(WORKING_DIRECTORY+"\\backend\\allAthletes.htm")
     tables = soup.find_all('table')
     athlete_and_sports_table = tables[2]
@@ -45,8 +45,30 @@ if __name__ == "__main__":
 
     remove_from_back(athlete_table,14)
     remove_indices(athlete_table,0,7)
-    print(athlete_table)
-    #athletes_sports = [i.get_text() for i in tables.find_all("td")]
+    return athlete_table
 
-    #athletes_sports = removeUnicodeSpace(athletes_sports)
-    #print(athletes_sports)
+def scrapeCompetitors_nigaragames():
+    soup = url2Soup("https://niagara2022games.ca/sports/#Athletics")
+    table = soup.find("div",{'class':"col-sm-12 col-lg-9"}) 
+    Athletes = [i.get_text() for i in table.find_all("li")]
+    Athletes = removeUnicodeSpace(Athletes)
+    return Athletes
+
+def scrapeSchedule_niagaragames():
+    soup = file2Soup(WORKING_DIRECTORY+"\\backend\\schedule.htm")
+    table = soup.find('tbody', id = "ctl00_ctl00_ContentPlaceHolderBasicMaster_ContentPlaceHolder1_secGroup1_1_secGroup1_1_SectionContent") 
+    schedule = [i.get_text() for i in table.find_all("tr")]
+    stringSchedule="".join(schedule)
+    schedule= stringSchedule.split("\n")
+    schedule = [i for i in schedule if i]
+    return schedule
+
+if __name__ == "__main__":
+    #athlete_table = scrapeAthleteData_gemspro()
+    #print(len(athlete_table))
+
+    #compeititors = scrapeCompetitors_nigaragames()
+    #print(len(compeititors))
+
+    #schedule = scrapeSchedule_niagaragames()
+    #print(schedule)
