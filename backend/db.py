@@ -52,4 +52,9 @@ if __name__ == "__main__":
             "location": items[i][4]
         }
         id_counter += 1
-        collection_name.insert_one(item)
+        try:
+            collection_name.insert_one(item)
+        except:
+            print("Id:"+string+" has already been added")
+        
+        
