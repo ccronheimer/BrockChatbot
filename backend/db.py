@@ -5,6 +5,8 @@ import scrape
 ## Need to pip install dnspython
 CONNECTION_STRING = "mongodb+srv://dbUser:Cosc4P01@chatbot.lorgj.mongodb.net/test"
 
+## STILL NEEDS EDGE CASES
+
 ## Establish connection to db.
 def getTemplate(template):
     templates = {
@@ -43,7 +45,8 @@ def insertManyIntoTable(tableName,data):
             res.append(input[i])
     if len(res)>0:
         table.insert_many(res)
-        print("inserted "+len(res)+" records successfully.")
+        
+        #print("inserted "+str(len(res))+" records successfully.")
 
 ## Inserts into specified table. Format should be a list.
 def insertIntoTable(tableName,data):
@@ -78,8 +81,12 @@ if __name__ == "__main__":
     #insertManyIntoTable("athlete_sport",scrape.scrapeAthleteData_gemspro())
     #returnTableData("athlete_sport")
 
-    #insertManyIntoTable("schedule",scrape.scrapeSchedule_niagaragames())
-    #returnTableData("schedule")
+    ##test
+    #insertIntoTable("schedule",["1","2","3","4","5"])
+    
+    
+    # insertManyIntoTable("schedule",scrape.scrapeSchedule_niagaragames())
+    # returnTableData("schedule")
 
     
     pass

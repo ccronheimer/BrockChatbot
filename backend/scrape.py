@@ -86,8 +86,8 @@ if __name__ == "__main__":
     
     #scrape_general_info()
 
-    #athlete_table = scrapeAthleteData_gemspro()
-    #print(athlete_table)
+    athlete_table = scrapeAthleteData_gemspro()
+    print(athlete_table)
 
     #compeititors = scrapeCompetitors_nigaragames()
     #print(len(compeititors))
