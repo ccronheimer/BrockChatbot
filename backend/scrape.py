@@ -15,6 +15,11 @@ def file2Soup(fileLocation):
         page = f.read()
     return BeautifulSoup(page, 'html.parser')
 
+def file2Soup2(filelocation):
+    with open(filelocation, encoding='utf8') as f:
+        page = f.read()
+    return BeautifulSoup(page, 'html.parser')
+
 def removeUnicodeSpace(list):
     return [i.replace(u"\xa0",u"").strip() for i in list]
 
@@ -63,7 +68,28 @@ def scrapeSchedule_niagaragames():
     schedule = [i for i in schedule if i]
     return schedule
 
+def scrape_general_info():
+    soup_wiki = file2Soup2("C:\\Users\\Yujie\\OneDrive\\Desktop\\Computer Science\\COSC 4P02\\BrockChatbot\\backend\\canadaGamesWiki.htm")
+    wiki_info_box = soup_wiki.find_all('p')
+    wiki_info = [i.get_text() for i in wiki_info_box]
+    #First 2 indices of info holds the most important information
+    #print(wiki_info[0] + wiki_info[1])
+
+    soup_FAQ = file2Soup2("C:\\Users\\Yujie\\OneDrive\\Desktop\\Computer Science\\COSC 4P02\\BrockChatbot\\backend\\canadaGamesFAQ.htm")
+    cg_containers = soup_FAQ.find_all('div', class_=('cg-container'))
+    FAQ = []
+    for cg_container in cg_containers:
+        FAQ = FAQ + cg_container.find_all('div', attrs={'data-w-id' : True})
+    FAQ_results = [i.get_text() for i in FAQ]
+    #Index 5 and 7 holds info not from wiki page in general FAQ page
+    #print(FAQ_results[5] + FAQ_results[7])
+
+    general_info = wiki_info[0] + wiki_info[1] + FAQ_results[5] + FAQ_results[7]
+    print(general_info)
+    return general_info
+
 if __name__ == "__main__":
+    scrape_general_info()
     #athlete_table = scrapeAthleteData_gemspro()
     #print(len(athlete_table))
 
