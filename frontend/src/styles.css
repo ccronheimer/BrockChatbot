@@ -3,33 +3,57 @@
   box-sizing: border-box;
 }
 body {
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   margin: 0;
 }
 
 /* need overflow for the scrolling */
-.chat-container {
+.container {
   position: fixed;
   top: 50%;
   left: 50%;
   /* bring your own prefixes */
   transform: translate(-50%, -50%);
-  background-color: white;
-  width: 8in;
-  min-height: 10in;
-  box-shadow: rgb(0,0,0,.1) 0 1px 2px 0;
-  border-radius: 7px;
-  color: #333;
+  background-color: #f7f7f8;
+  width: 500px;
+  height: 600px;
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.055);
+  border-radius: 14px;
+
+  display: flex;  
+  flex-direction:column;  
+  overflow: hidden;
+
+
 }
 
-.chat {
-  background-color: blue;
+.chat-container {
+  background-color: #f7f7f8;
+  box-shadow: rgb(0 0 0 / 8%) 0 1px;
+
+  flex: 4;
+}
+
+.chat-input-container {
+ flex: 1;
+ background-color: white;
+
 }
 
 .chat-input {
-  background-color: green;
   
+ 
 }
 
+button {
+  
+  
+}
+ /* white background #ffffff*/
+ /* blue -> 0066FF */
+ /* light grey -> #f7f7f8 */
 
- 
+
+
