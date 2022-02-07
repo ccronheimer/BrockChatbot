@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/BrockChatbot/static/css/main.17099ab4.css",
+    "main.js": "/BrockChatbot/static/js/main.028a6ba7.js",
+    "static/media/SF-Pro.ttf": "/BrockChatbot/static/media/SF-Pro.63c9ae26f62770c98faa.ttf",
+    "index.html": "/BrockChatbot/index.html",
+    "main.17099ab4.css.map": "/BrockChatbot/static/css/main.17099ab4.css.map",
+    "main.028a6ba7.js.map": "/BrockChatbot/static/js/main.028a6ba7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.17099ab4.css",
+    "static/js/main.028a6ba7.js"
+  ]
+}
