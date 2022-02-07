@@ -34,7 +34,7 @@ body {
   font-size: 20px;
   display: flex;
   color: #181b21;
-  font-family: "Quicksand", sans-serif;
+  font-family: "sf", sans-serif;
   border-bottom: 2px solid #bdbdbd42;
   
 }
@@ -46,7 +46,7 @@ body {
   border-top-right-radius: 8px;
   background-color: white;
   flex-direction: column;
-  overflow-y: scroll;
+  overflow: auto; 
 }
 
 .chat-input-container {
@@ -66,7 +66,7 @@ body {
   border-radius: 30px;
   background-color: #dee2e6;
   font-size: 14px;
-  font-family: "Quicksand", sans-serif;
+  font-family: "sf", sans-serif;
   font-weight: bold;
   padding: 12px;
 }
@@ -102,7 +102,7 @@ body {
 .message-user {
   background-color: #0066ff;
   color: white;
-  font-family: "Quicksand", sans-serif;
+  font-family: "sf", sans-serif;
  
   padding: 10px;
   font-size: 12.5px;
@@ -124,7 +124,7 @@ body {
   padding: 10px;
   font-size: 12.5px;
   color: rgb(0, 0, 0);
-  font-family: "Quicksand", sans-serif;
+  font-family: "sf", sans-serif;
   margin-left: 10px;
   margin-bottom: 20px;
   margin-top: 20px;
@@ -136,9 +136,10 @@ body {
 
 
 .bot-profile {
- width: 40px;
- height: 40px;
- border-radius: 10px;
- background-color: #dee2e6;
+ font-size: 40px;
 }
 
+@font-face {
+  font-family: 'sf';
+  src: local('sf'), url(./fonts/SF-Pro.ttf) format('ttf');
+}

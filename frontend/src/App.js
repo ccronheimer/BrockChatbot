@@ -3,15 +3,7 @@ import "./styles.css";
 import { FaArrowUp } from "react-icons/fa";
 function App() {
   const [inputText, setInputText] = useState({message: "", from: "user"});
-  const [messages, setNewMessage] = useState([
-    {
-     message: "How can I help you?",
-     from: "bot"
-    },
-    {
-     message: "Hot Drink2",
-     from: "user"
-    }]);
+  const [messages, setNewMessage] = useState([{message: "How can I help you?", from: "bot"}]);
   
 
   const addMessage = (e) => {
@@ -19,7 +11,8 @@ function App() {
     setNewMessage([...messages, inputText]);
     console.log(messages);
   };
- 
+
+
   return (
     <div className="container">
     <div className="chat-title">Chatbot</div>
@@ -29,8 +22,10 @@ function App() {
         </div>
       </div>
       <div id="myInput" className="chat-input-container">
+
         <input
-          className="chat-input"
+          onKeyPress={(event) => {if (event.key === "Enter") {addMessage(event)}}}
+          className="chat-input" 
           onChange={(e) => {
             setInputText({message: e.target.value, from: "user"});
           }}
@@ -54,7 +49,7 @@ function MessageList(props) {
 }
 
 function Message(props) {
-  return<div className={"message-"+props.from+"-container"}>{props.from==="bot" && (<div className="bot-profile"></div>)}<div className={"message-"+props.from}>{props.value}</div></div>;
+  return<div className={"message-"+props.from+"-container"}>{props.from==="bot" && (<div className="bot-profile">🤖</div>)}<div className={"message-"+props.from}>{props.value}</div></div>;
 }
 
 export default App;
