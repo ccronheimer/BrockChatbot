@@ -1,65 +1,60 @@
-import React,{useState} from 'react';
-import "./styles.css"
-
+import React, { useState, useRef } from "react";
+import "./styles.css";
+import { FaArrowUp } from "react-icons/fa";
 function App() {
-
-  const questions = ['Lorem ipsum dolor sit amet?', 'Lorem ipsum dolor sit amet2?', 'Lorem ipsum dolor sit amet3?']
- 
-  const [messages, setMessages] = useState(['How can I help you?']);
+  const [inputText, setInputText] = useState({message: "", from: "user"});
+  const [messages, setNewMessage] = useState([
+    {
+     message: "How can I help you?",
+     from: "bot"
+    },
+    {
+     message: "Hot Drink2",
+     from: "user"
+    }]);
   
-  const handleAddMessage = () => {
-    
-  };
 
-  return (
-    
-        <div className='container'>
-          <div className='chat-container'>
-            <div className='chat'>
-                <MessageList messages={messages}/>
-            </div>
-          </div>
-          <div className='chat-input-container'>
-            <div className='chat-input'>
-              <QuestionList questions={questions}/>
-            </div>
-          </div>
-        </div>
+  const addMessage = (e) => {
+    e.preventDefault();
+    setNewMessage([...messages, inputText]);
+    console.log(messages);
+  };
  
+  return (
+    <div className="container">
+    <div className="chat-title">Chatbot</div>
+      <div className="chat-container">
+        <div className="chat">
+          <MessageList messages={messages} />
+        </div>
+      </div>
+      <div id="myInput" className="chat-input-container">
+        <input
+          className="chat-input"
+          onChange={(e) => {
+            setInputText({message: e.target.value, from: "user"});
+          }}
+          placeholder="Enter Question!"
+        />
+        <div id="myBtn" className="add-question-button" onClick={addMessage} >
+          <FaArrowUp />
+        </div>
+      </div>
+    </div>
   );
 }
+
 function MessageList(props) {
   const messages = props.messages;
-  const listMessages = messages.map((message) => 
-    <Message key={message} value={message}/>
-  );
+  const listMessages = messages.map(({message,from}) => (
+    <Message key={(message+Date.now()).toString()} value={message} from={from} />
+  ));
 
-  return (
-    <div>
-      {listMessages}
-    </div>
-  )
+  return <div>{listMessages}</div>;
 }
 
 function Message(props) {
-  return <p>{props.value}</p>
+  return<div className={"message-"+props.from+"-container"}>{props.from==="bot" && (<div className="bot-profile"></div>)}<div className={"message-"+props.from}>{props.value}</div></div>;
 }
 
-function Question(props) {
-  return <button>{props.value}</button>
-}
-
-function QuestionList(props) {
-  const questions = props.questions;
-  const listQuestions = questions.map((question) => 
-    <Question key={question} value={question}/>
-  );
-
-  return (
-    <div>
-      {listQuestions}
-    </div>
-  )
-}
 export default App;
-
