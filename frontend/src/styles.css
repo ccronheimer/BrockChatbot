@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #181b21;
+  background-color: #f8f8f8;
   margin: 0;
 }
 
@@ -24,6 +24,8 @@ body {
   border-radius: 14px;
   overflow: hidden;
   background-color: white;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
 }
 
 .chat-title{
@@ -134,10 +136,14 @@ body {
   animation: leaves 0.3s ease;
 }
 
-
+.scrollInto {
+  height: 50px;
+}
 .bot-profile {
  font-size: 40px;
 }
+
+
 
 @font-face {
   font-family: 'sf';
