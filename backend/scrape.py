@@ -2,15 +2,16 @@ import sched
 import requests,sys
 from bs4 import BeautifulSoup
 import pathlib
+import codecs
 
 WORKING_DIRECTORY = str(pathlib.Path().resolve())
-
 
 
 ## Returns the soup of a url
 def url2Soup(url):
     page = requests.get(url)
-    return BeautifulSoup(page.text, 'html.parser')
+    page.encoding = 'UTF-8'
+    return BeautifulSoup(page.content, 'html.parser')
 
 ## Returns the soup of an html file
 def file2Soup(fileLocation):
@@ -24,20 +25,24 @@ def file2Soup_utf(filelocation):
         page = f.read()
     return BeautifulSoup(page, 'html.parser')
 
+def grabEveryN_fromList(list,n):
+    return [list[i*n:i*n+n] for i in range(int(len(list)/n))]
+
 ## Remove all trailing spaces from list items and space unicodes
 def removeUnicodeSpace(list):
     return [i.replace(u"\xa0",u"").strip() for i in list]
 
 ## Returns scraped player+sport data from gemspro 2019 html for testing pruposes
+## Scraped from https://cg2019.gems.pro/Result/ShowPerson_List.aspx?SetLanguage=en-CA
 def scrapeAthleteData_gemspro(filename="allAthletes.htm"):
-    soup = file2Soup(WORKING_DIRECTORY+"\\backend\\allAthletes.htm")
+    soup = file2Soup_utf(WORKING_DIRECTORY+"\\backend\\allAthletes.htm")
     table = soup.find('table',id="ctl00_ContentPlaceHolder1_tblParticipant") 
-    athletes_sports = [i.get_text() for i in table.find_all("td")]
+    athletes_sports = [i.get_text().encode('UTF-8') for i in table.find_all("td")]
     athletes_sports = removeUnicodeSpace(athletes_sports)
     athletes_sports = grabEveryN_fromList(athletes_sports,2)
     return athletes_sports
 
-
+## Scraped from https://niagara2022games.ca/sports/#Athletics
 def scrapeCompetitors_nigaragames():
     soup = url2Soup("https://niagara2022games.ca/sports/#Athletics")
     table = soup.find("div",{'class':"col-sm-12 col-lg-9"}) 
@@ -45,12 +50,18 @@ def scrapeCompetitors_nigaragames():
     Athletes = removeUnicodeSpace(Athletes)
     return Athletes
 
-def grabEveryN_fromList(list,n):
-    return [list[i*n:i*n+n] for i in range(int(len(list)/n))]
+## Scraped from https://cg2019.gems.pro/Result/MedalList.aspx?SetLanguage=en-CA
+def medalStandings_nigaragames():
+    soup = url2Soup("https://cg2019.gems.pro/Result/MedalList.aspx?SetLanguage=en-CA")
+    table = soup.find("td",{'class':"LM_MasterPageDataCell"}) 
+    Medal = [i.get_text() for i in table.find_all("tr")]
+    Medal = removeUnicodeSpace(Medal)
+    return Medal
 
 ## Return the schedule on niagara games website.
+## Scraped from https://cg2022.gems.pro/Result/Calendar.aspx?SetLanguage=en-CA&Grouping=D&Gems_ScreenWidth=1920&Gems_ScreenHeight=1080&Gems_ScreenAvailWidth=1920&Gems_ScreenAvailHeight=1080
 def scrapeSchedule_niagaragames():
-    soup = file2Soup(WORKING_DIRECTORY+"\\backend\\schedule.htm")
+    soup = file2Soup_utf(WORKING_DIRECTORY+"\\backend\\schedule.htm")
     table = soup.find('tbody', id = "ctl00_ctl00_ContentPlaceHolderBasicMaster_ContentPlaceHolder1_secGroup1_1_secGroup1_1_SectionContent") 
     schedule = [i.get_text() for i in table.find_all("tr")]
     stringSchedule="".join(schedule)
@@ -86,11 +97,14 @@ if __name__ == "__main__":
     
     #scrape_general_info()
 
-    athlete_table = scrapeAthleteData_gemspro()
-    print(athlete_table)
+    #athlete_table = scrapeAthleteData_gemspro()
+    #print(athlete_table)
 
-    #compeititors = scrapeCompetitors_nigaragames()
-    #print(len(compeititors))
+    #medal = medalStandings_nigaragames()
+    #print(medal)
+
+    compeititors = scrapeCompetitors_nigaragames()
+    print(compeititors)
 
     #schedule = scrapeSchedule_niagaragames()
     #print(schedule)
