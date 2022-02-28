@@ -2,7 +2,6 @@ import sched
 import requests,sys
 from bs4 import BeautifulSoup
 import pathlib
-import codecs
 
 WORKING_DIRECTORY = str(pathlib.Path().resolve())
 
