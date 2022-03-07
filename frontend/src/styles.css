@@ -116,10 +116,11 @@ body {
 
   
 }
-.message-bot-container {
+.message-pro-container {
   display: flex;
   align-items: center;
   margin-right: 100px;
+  background-color: #ffffff;
 }
 .message-bot {
   background-color: #dee2e6;
@@ -135,7 +136,23 @@ body {
 
   animation: leaves 0.3s ease;
 }
-
+.chips {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  
+}
+.chip{
+  background-color: #fff; /* Green */
+  border: 3px solid #0066ff;
+  border-radius: 10px;
+  color: black;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin: 2px;
+}
 .scrollInto {
   height: 50px;
 }
