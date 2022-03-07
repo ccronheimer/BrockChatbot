@@ -2,7 +2,6 @@ import sched
 import requests,sys
 from bs4 import BeautifulSoup
 import pathlib
-import codecs
 
 WORKING_DIRECTORY = str(pathlib.Path().resolve())
 
@@ -37,7 +36,7 @@ def removeUnicodeSpace(list):
 def scrapeAthleteData_gemspro(filename="allAthletes.htm"):
     soup = file2Soup_utf(WORKING_DIRECTORY+"\\backend\\allAthletes.htm")
     table = soup.find('table',id="ctl00_ContentPlaceHolder1_tblParticipant") 
-    athletes_sports = [i.get_text().encode('UTF-8') for i in table.find_all("td")]
+    athletes_sports = [i.get_text() for i in table.find_all("td")]
     athletes_sports = removeUnicodeSpace(athletes_sports)
     athletes_sports = grabEveryN_fromList(athletes_sports,2)
     return athletes_sports
