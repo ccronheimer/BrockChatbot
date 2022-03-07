@@ -78,7 +78,7 @@ function Message(props) {
       {props.from === "bot" && <div className="chips">
       <button className="Chip">History</button>
       <button className="Chip">Schedule</button>
-      <button className="Chip">Stats</button>
+      <button className="Chip">Stat</button>
       </div>
       }
     </div>
