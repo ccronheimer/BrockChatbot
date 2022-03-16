@@ -8,6 +8,7 @@ const athleteSchema = new Schema({
     key: { type: String, required: true},
 }, {
     timestamps: true,
+    collection: 'athlete_sport',
 });
 
 const Athlete = mongoose.model('Athlete', athleteSchema);

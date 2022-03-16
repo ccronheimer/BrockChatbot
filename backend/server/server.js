@@ -17,6 +17,12 @@ connection.once("open", () => {
   console.log("MongoDB database connection esatblished successfully");
 });
 
+// /SummerGame/athlete_sport
+
+const athletesRouter = require('./routes/athlete_sport');
+// if we go to /athletes all athletes will load 
+app.use('/athlete_sport', athletesRouter);
+
 app.listen(port, () => {
   // perform a database connection when server start
   console.log(`Server is running on port: ${port}`);
