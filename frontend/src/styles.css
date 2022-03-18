@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: #f8f8f8;
+  background-color: #fff;
   margin: 0;
 }
 
@@ -24,11 +24,12 @@ body {
   border-radius: 14px;
   overflow: hidden;
   background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
-.chat-title{
+.chat-header {
   height: 50px;
   align-items: center;
   justify-content: center;
@@ -38,7 +39,6 @@ body {
   color: #181b21;
   font-family: "sf", sans-serif;
   border-bottom: 2px solid #bdbdbd42;
-  
 }
 .chat-container {
   display: flex;
@@ -46,9 +46,8 @@ body {
   padding: 1rem;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
-  background-color: white;
   flex-direction: column;
-  overflow: auto; 
+  overflow: auto;
 }
 
 .chat-input-container {
@@ -58,7 +57,7 @@ body {
   height: 80px;
   align-items: center;
   justify-content: space-evenly;
-  border-top: 2px solid #bdbdbd42
+  border-top: 2px solid #bdbdbd42;
 }
 
 .chat-input {
@@ -98,71 +97,70 @@ body {
   transform: translateY(2px);
 }
 
-.message-user-container {
-  margin-left: 100px;
+.bot-container {
+  display: flex;
+  flex-direction: column;
 }
-.message-user {
-  background-color: #0066ff;
-  color: white;
-  font-family: "sf", sans-serif;
- 
-  padding: 10px;
-  font-size: 12.5px;
- 
-  margin-bottom: 20px;
-  margin-top: 20px;
-  border-radius: 30px;
-  overflow-wrap: break-word;
 
+.bot-message-container {
+  display: flex;
+  flex-direction: row;
+ 
   
 }
-.message-pro-container {
-  display: flex;
-  align-items: center;
-  margin-right: 100px;
-  background-color: #ffffff;
-}
-.message-bot {
-  background-color: #dee2e6;
-  padding: 10px;
-  font-size: 12.5px;
-  color: rgb(0, 0, 0);
-  font-family: "sf", sans-serif;
-  margin-left: 10px;
-  margin-bottom: 20px;
-  margin-top: 20px;
-  border-radius: 30px;
-  overflow-wrap: break-word;
 
-  animation: leaves 0.3s ease;
-}
-.chips {
-  background-color: rgb(255, 255, 255);
-  display: flex;
-  
-}
-.chip{
-  background-color: #fff; /* Green */
-  border: 3px solid #0066ff;
-  border-radius: 10px;
-  color: black;
-  padding: 5px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 14px;
-  margin: 2px;
-}
-.scrollInto {
-  height: 50px;
-}
 .bot-profile {
- font-size: 40px;
+  font-size: 40px;
+  
 }
 
+.bot-message {
+  background-color: rgb(229, 229, 234);
+  font-weight: bold;
+  font-size: 16px;
+  width: 70%;
+  overflow-wrap: break-word;
+  margin-top: 30px;
+  border-radius: 2px 20px 20px 20px;
+  padding: 8px 10px;
+  margin-left: 8px;
+}
 
+.bot-chips {
+  margin: auto;
+  width: 80%;
+ 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  
+
+margin-top: 6px;
+
+}
+.chip {
+  padding: 8px 15px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+
+  background-color: #06f;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px #004dc0;
+  margin: 8px;
+}
+.chip:hover {background-color: #1b76ff}
+
+.chip:active {
+  background-color: #1b76ff;
+  box-shadow: none;
+  transform: translateY(4px);
+}
 
 @font-face {
-  font-family: 'sf';
-  src: local('sf'), url(./fonts/SF-Pro.ttf) format('ttf');
+  font-family: "sf";
+  src: local("sf"), url(./fonts/SF-Pro.ttf) format("ttf");
 }

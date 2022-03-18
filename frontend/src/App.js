@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import "./styles.css";
 import { FaArrowUp } from "react-icons/fa";
-import image from './unknown.png'
-import ima from './a.png'
+
 
 function App() {
   const [inputText, setInputText] = useState({ message: "", from: "user" });
@@ -45,7 +44,7 @@ function App() {
     <div className="container">
 
      
-      <div className="chat-title"><img src={image} width={100}/><img src={ima} width={100}/></div>
+
 
       <div className="chat-container">
         <div className="chat">

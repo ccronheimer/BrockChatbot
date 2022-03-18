@@ -5,7 +5,7 @@ let Athlete = require('../models/athlete.model');
 router.route('/').get((req, res) => {
     Athlete.find()
         // return athletes in json
-        .then(athlete_sport => res.json(athlete_sport))
+        .then(athletes => res.json(athletes))
         // if error return 400 
         .catch(err => res.status(400).json('Error: ' + err));
 })

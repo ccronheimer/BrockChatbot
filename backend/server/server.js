@@ -19,9 +19,9 @@ connection.once("open", () => {
 
 // /SummerGame/athlete_sport
 
-const athletesRouter = require('./routes/athlete_sport');
+const athletesRouter = require('./routes/athletes');
 // if we go to /athletes all athletes will load 
-app.use('/athlete_sport', athletesRouter);
+app.use('/athletes', athletesRouter);
 
 app.listen(port, () => {
   // perform a database connection when server start
