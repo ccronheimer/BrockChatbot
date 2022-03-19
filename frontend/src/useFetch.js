@@ -6,20 +6,20 @@ function useFetch(url) {
   const [loading, setLoading] = useState(null);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    setLoading(true);
-    axios
-      .get(url)
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((err) => {
-        setError(err);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [url]);
+  // useEffect(() => {
+  //   setLoading(true);
+  //   axios
+  //     .get(url)
+  //     .then((response) => {
+  //       setData(response.data);
+  //     })
+  //     .catch((err) => {
+  //       setError(err);
+  //     })
+  //     .finally(() => {
+  //       setLoading(false);
+  //     });
+  // }, [url]);
 
 
   const refetch = () => {

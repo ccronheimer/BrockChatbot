@@ -113,6 +113,9 @@ function Message(props) {
           <button className="chip" onClick={() => props.chipPressed("Stats")}>
             Stats
           </button>
+          <button className="chip" onClick={() => props.chipPressed("Location")}>
+            Location
+          </button>
         </div>
       )}
     </div>
