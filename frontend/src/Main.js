@@ -9,12 +9,26 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
 const Main = () => {
+  const [disable, setDisabled] = useState(false);
+  const [canInput, setInput] = useState(false);
+
+  const [filteredResults, setFilteredResults] = useState([]);
+
+  const initQuestions = [
+    "Today's Games",
+    "Schedule",
+    "Find an athlete",
+    "Stats",
+    "Location",
+  ];
+
   const initMessages = [
-    { message: "How can I help you?", from: "bot", id: uuidv4() },
+    { message: "How can I help you today?", from: "bot", id: uuidv4() },
   ];
 
   const [list, setList] = useState(initMessages);
-
+  const [questions, setQuestions] = useState(initQuestions);
+  
   // we will have data pre loaded since it is not much
 
   // add message
@@ -28,31 +42,84 @@ const Main = () => {
     "http://localhost:3001/athletes"
   );
 
-  // we have a answer
+ 
+
+  const addData = (res) => {
+    setFilteredResults(res);   
+    
+  }
+
+ 
+  // we have the data
   useEffect(() => {
-    if (data != null) {
-      console.log(data);
+
+    if (filteredResults.length !== 0) {
       // update the list for answer
-      list.pop(); 
-      handleAdd(JSON.stringify(data), "bot", uuidv4());
-    }
-  }, [data]);
+      setTimeout(() => {
+        console.log(filteredResults);
+
+       // list.pop();
+        // get data 
+        // then go on to search
+        // data comes back filtered 
+        // then we add it to messages 
+        setInput(false);
+        setQuestions(initQuestions)
+        handleAdd(filteredResults, "bot", uuidv4());
+        setDisabled(false);
 
 
+        //setDisabled(false);
+      }, 2000);
+    } 
 
-  // get the users questions
+   
+
+  }, [filteredResults]);
+
+
+  // called when list is updated from user
   useEffect(() => {
+
+    const thisMessage = list[list.length - 1];
+
     // check if the last question is from user
-    if (list[list.length - 1].from === "user") {
+    if (thisMessage.from === "user") {
       console.log("bot is thinking");
 
-      // if question is for atheletes fetch athletes data
-      refetch();
-      // find a answer (loading)
-      handleAdd("fetching...", "bot", "temp");
+      // cases... 
+      if (thisMessage.message === "Find an athlete") {
+        handleAdd("Who are you looking for?", "bot", uuidv4());
+        refetch(); // fetch athlete data 
+       // setDisabled(true); // close chips open input
+        setQuestions(["Athlete Name", "Athlete Sport"])
+      } else if(thisMessage.message === "Athlete Name") {
+        handleAdd("Enter a name?", "bot", uuidv4());
+        // filter through names
+        setInput(true);
 
-      // grey out input while waiting for answers 
+
+      } else if(thisMessage.message === "Athlete Sport") {
+        
+        handleAdd("Enter a sport?", "bot", uuidv4());
+        setInput(true);
+
+        
+      }else {
+        
+        // received user input so find a answer
+
+        handleAdd("fetching...", "bot", "temp");
+        setDisabled(true);
+
+       
+
+      }
+
+
     }
+
+    console.log(thisMessage.message)
   }, [list]);
 
   // if (loading) return <div>loading...</div>;
@@ -74,7 +141,7 @@ const Main = () => {
       {/* <button onClick={refetch}>Refetch</button> */}
 
       {/* chat input */}
-      <ChatInput handleAdd={handleAdd} />
+      <ChatInput handleAdd={handleAdd} canInput={canInput} data={data} addData={addData} questions={questions} disable={disable} />
     </div>
   );
 };

@@ -85,13 +85,14 @@ body {
 .chat-input {
   height: 40px;
   border: none;
-  width: 300px;
+  width: 250px;
   border-radius: 30px;
   background-color: #dee2e6;
   font-size: 14px;
   font-family: "sf", sans-serif;
   font-weight: bold;
   padding: 12px;
+  margin-top: 10px;
 }
 
 .chat-input:focus {
@@ -143,6 +144,7 @@ body {
   padding: 8px 10px;
   margin-left: 8px;
   font-family: sans-serif;
+  animation: example .25s;
 }
 
 .bot-chips {
@@ -173,6 +175,23 @@ margin-top: 6px;
   font-family: sans-serif;
   font-weight: bold;
 }
+
+.chip-disabled {
+  padding: 8px 15px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+
+  background-color: #8b8b8b;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 4px #6d6d6d;
+  margin: 8px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
 .chip:hover {background-color: #1b76ff}
 
 .chip:active {
@@ -194,5 +213,16 @@ margin-top: 6px;
   margin-left: 8px;
   font-family: sans-serif;
   align-self: flex-end;
+  animation: example .25s;
 }
 
+
+
+@keyframes example {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
