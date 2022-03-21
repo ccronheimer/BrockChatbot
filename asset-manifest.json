@@ -1,16 +1,15 @@
 {
   "files": {
-    "main.css": "/BrockChatbot/static/css/main.84d111c9.css",
-    "main.js": "/BrockChatbot/static/js/main.82049518.js",
-    "static/media/SF-Pro.ttf": "/BrockChatbot/static/media/SF-Pro.63c9ae26f62770c98faa.ttf",
-    "static/media/unknown.png": "/BrockChatbot/static/media/unknown.04b0c7de6f64c742d814.png",
-    "static/media/a.png": "/BrockChatbot/static/media/a.18c0750cc81cf5c54ff3.png",
+    "main.css": "/BrockChatbot/static/css/main.a7bdc5cf.css",
+    "main.js": "/BrockChatbot/static/js/main.378da4c8.js",
+    "static/media/sgames.png": "/BrockChatbot/static/media/sgames.04b0c7de6f64c742d814.png",
+    "static/media/brock.png": "/BrockChatbot/static/media/brock.18c0750cc81cf5c54ff3.png",
     "index.html": "/BrockChatbot/index.html",
-    "main.84d111c9.css.map": "/BrockChatbot/static/css/main.84d111c9.css.map",
-    "main.82049518.js.map": "/BrockChatbot/static/js/main.82049518.js.map"
+    "main.a7bdc5cf.css.map": "/BrockChatbot/static/css/main.a7bdc5cf.css.map",
+    "main.378da4c8.js.map": "/BrockChatbot/static/js/main.378da4c8.js.map"
   },
   "entrypoints": [
-    "static/css/main.84d111c9.css",
-    "static/js/main.82049518.js"
+    "static/css/main.a7bdc5cf.css",
+    "static/js/main.378da4c8.js"
   ]
 }
