@@ -91,6 +91,12 @@ def scrape_general_info():
     print(general_info)
     return general_info
 
+def live_countdown_update():
+    soup = url2Soup("https://niagara2022games.ca/")
+    table = soup.find('ul', class_ = "pb-5 px-5 mb-5 m-0") 
+    count_down = [i.get_text() for i in table.find_all("span")]
+    return count_down
+
 if __name__ == "__main__":
     ## Example use cases:
     
@@ -102,8 +108,14 @@ if __name__ == "__main__":
     #medal = medalStandings_nigaragames()
     #print(medal)
 
-    compeititors = scrapeCompetitors_nigaragames()
-    print(compeititors)
+    #compeititors = scrapeCompetitors_nigaragames()
+    #print(compeititors)
+
+    #count_down = live_countdown_update()
+    #print(count_down)
+
+    athletes = atheleteAndSportList()
+    print(athletes)
 
     #schedule = scrapeSchedule_niagaragames()
     #print(schedule)

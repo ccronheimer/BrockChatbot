@@ -1,0 +1,41 @@
+Brock University, https://www.google.com/maps/dir//Brock+University,+1812+Sir+Isaac+Brock+Way,+St.+Catharines,+ON+L2S+3A1/@43.1175731,-79.2498812,17z/data=!4m16!1m6!3m5!1s0x89d34e32f9f0e4a5:0xdb7b89e6cdaba7d2!2sBrock+University!8m2!3d43.1175731!4d-79.2476925!4m8!1m0!1m5!1m1!1s0x89d34e32f9f0e4a5:0xdb7b89e6cdaba7d2!2m2!1d-79.2476925!2d43.1175731!3e3
+
+Brock University-Alumni Field, https://www.google.com/maps/dir//Alumni+Field,+University+Rd+W,+St.+Catharines,+ON+L2S+3A1/@43.118243,-79.2508724,16.5z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d34e3105b80aa3:0x44723721a2357b97!2m2!1d-79.2529947!2d43.1190446!3e3
+
+Brock University-Eleanor Misener Aquatics Centre, https://www.google.com/maps/dir//Eleanor+Misener+Aquatic+Centre,+St.+Catharines,+ON/@43.1185818,-79.2520971,17.75z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d34e31864ad03f:0x93271cf4beb4b794!2m2!1d-79.2511258!2d43.1196942!3e3
+
+Canada Games Park,https://www.google.com/maps/dir//Niagara+2022+Canada+Summer+Games,+221+Glendale+Ave+%23617L,+St.+Catharines,+ON+L2T+2K9/@43.1348814,-79.2241467,16.79z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d351276ca724e3:0xa18f0b0b54b0cb98!2m2!1d-79.2227865!2d43.1347102!3e3
+
+Etobicoke Olympium, https://www.google.com/maps/dir//Etobicoke+Olympium,+Rathburn+Road,+Etobicoke,+ON/@43.6490161,-79.5876189,15.92z/data=!4m9!4m8!1m0!1m5!1m1!1s0x882b38486a28d285:0x33af516e34802b4c!2m2!1d-79.5844405!2d43.6502386!3e3
+
+Legends on the Niagara, https://www.google.com/maps/dir//Legends+on+the+Niagara+Golf+Course,+Niagara+Parkway,+Niagara+Falls,+ON/@43.0426119,-79.0456654,15.71z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d342d417b5f077:0x5f8eda25ba910f6c!2m2!1d-79.0405197!2d43.0442466!3e3
+
+Meridian Centre, https://www.google.com/maps/dir//Meridian+Centre,+David+S.+Howes+Way,+St.+Catharines,+ON/@43.1563831,-79.2447268,16.87z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d3504cc7abcb17:0x453bec047b51f647!2m2!1d-79.2444199!2d43.1564094!3e3
+
+Niagara College - Welland Campus,https://www.google.com/maps/dir//Niagara+College+-+Welland+Campus,+Welland,+ON/@43.0128356,-79.2648533,15.42z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d349a0d444dad9:0xb56cf6812c4578c5!2m2!1d-79.262253!2d43.014897!3e3
+
+Niagara-on-the-Lake Sailing Club, https://www.google.com/maps/dir//Niagara-On-The-Lake+Sailing+Club,+10+Melville+St,+Niagara-on-the-Lake,+ON+L0S+1J0/@43.2505133,-79.0596188,14.46z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d35f7af163d297:0x6efd951642bfd6fd!2m2!1d-79.0637921!2d43.255425!3e3
+
+Niagara-on-the-Lake Tennis Club, https://www.google.com/maps/dir//Niagara-on-the-Lake+Tennis+Club,+Veterans+Lane,+Niagara-on-the-Lake,+ON/@43.2478808,-79.0733156,15.33z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d35f730bc658e7:0xba0bcb6a4391888!2m2!1d-79.0739189!2d43.250247!3e3
+
+Oakes Park, https://www.google.com/maps/dir//Oakes+Park,+Niagara+Falls,+ON/@43.1023483,-79.0933441,15.62z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d343477a25768b:0x892c59641270069b!2m2!1d-79.0878065!2d43.1030544!3e3
+
+Port Colborne - H.H. Knoll Lakeview Park, https://www.google.com/maps/dir//H.H.+Knoll+Lakeview+Park,+Sugarloaf+Street,+Port+Colborne,+ON/@42.8790634,-79.2530357,15.62z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d331182be35c51:0x87589935d226ef9b!2m2!1d-79.2561162!2d42.8792385!3e3
+
+Royal Canadian Henley Rowing Course, https://www.google.com/maps/dir//Royal+Canadian+Henley+Rowing+Course,+St.+Catharines,+ON/@43.1889058,-79.2691207,15.33z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d351418644c9d3:0xac9d2a1d17b68e58!2m2!1d-79.2727178!2d43.1927221!3e3
+
+Southward Community Park, https://www.google.com/maps/dir//Southward+Community+Park,+Mud+Street+West,+Grassie,+ON/@43.1505426,-79.6195462,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x882cbac723146fe3:0x2876197db6c7f14!2m2!1d-79.5845269!2d43.1505479!3e3
+
+Town of Pelham - Fonthill, https://www.google.com/maps/dir//Fonthill,+Pelham,+ON/@43.0453296,-79.3204684,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x89d3495b85ab330f:0xa66b7f6644047a01!2m2!1d-79.2854491!2d43.0453349!3e3
+
+Twelve Mile Creek, https://www.google.com/maps/dir//Twelve+Mile+Creek,+St.+Catharines,+ON/@43.1745838,-79.3044478,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x89d351bcec8bd18f:0x98dd23489d5ab2a1!2m2!1d-79.2694285!2d43.1745891!3e3
+
+Welland Baseball Stadium,https://www.google.com/maps/dir//Welland+Sports+Complex,+90+Quaker+Rd,+Welland,+ON+L3C+7G6/@43.0728905,-79.2644598,13z/data=!4m9!4m8!1m0!1m5!1m1!1s0x89d3490245489759:0xdaab953e0e2879fe!2m2!1d-79.2464064!2d43.0246979!3e3
+
+Welland International Flatwater Centrem, https://www.google.com/maps/dir//Welland+International+Flatwater+Centre,+Townline+Tunnel+Road,+Welland,+ON/@42.9637726,-79.290074,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x89d349cb8bb968bd:0x1a7c3bca579bdd2a!2m2!1d-79.2550547!2d42.9637779!3e3
+
+Welland Tennis Club, https://www.google.com/maps/dir//Welland+Tennis+Club,+Hooker+Street,+Welland,+ON/@42.9889389,-79.2892362,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x89d349cf95b0b3d1:0xb28316c735649e8!2m2!1d-79.2542189!2d42.988953!3e3
+
+Youngs Sportsplex, https://www.google.com/maps/dir//Youngs+Sportsplex,+River+Road,+Welland,+ON/@43.009305,-79.2691429,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x89d3485a11f8cde9:0x1acfc4ee718956c7!2m2!1d-79.2341236!2d43.0093103!3e3
+
+Southward Community Park (Softball), https://www.google.com/maps/dir//Southward+Community+Park,+Mud+Street+West,+Grassie,+ON/@43.1505426,-79.6195462,13z/data=!3m1!4b1!4m9!4m8!1m0!1m5!1m1!1s0x882cbac723146fe3:0x2876197db6c7f14!2m2!1d-79.5845269!2d43.1505479!3e3
