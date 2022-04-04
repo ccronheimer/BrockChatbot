@@ -163,7 +163,7 @@ if __name__ == "__main__":
     
     
     # for player in players:
-    #     print(str(players.index(player)+1)+"/"+str(len(players)))
+        
     #     res = grabPlayerData(player)
 
     #     try:
@@ -172,10 +172,10 @@ if __name__ == "__main__":
     #         l = []
     #     l.append(res)
     #     writeToPickle(l,"data.pickle")
-        
-    print(readPickle("data.pickle"))
+    #     print(str(players.index(player)+1)+"/"+str(len(players)))
 
-    
+   
+#    -------------------------------------------------------------------------------------- 
     
 
     #scrape_general_info()
