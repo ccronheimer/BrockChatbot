@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 import pymongo
 import scrape
-
+import pickle
 ## Need to pip install dnspython
 CONNECTION_STRING = "mongodb+srv://dbUser:Cosc4P01@chatbot.lorgj.mongodb.net/test"
 
@@ -11,43 +11,37 @@ CONNECTION_STRING = "mongodb+srv://dbUser:Cosc4P01@chatbot.lorgj.mongodb.net/tes
 def getTemplate(template):
     templates = {
         "schedule":{"time":"","sport": "","gender": "","pool": "","location": ""},
-        "athlete_sport":{"athlete":"","sport":""}
+        "athletes":{"name":"","cont":"","hometown":"","type":"","sport":"","age":"","height":"","weight":""}
     }
     return templates[template].copy()
 
 
 ## Provide the mongodb atlas url to connect python to mongodb using pymongo
 def get_database():
-    try:
-        client = MongoClient(CONNECTION_STRING, connect=False)
-        print("Connected Successfully.")
-    except:
-        print("Connection Failed.")
-  
-    return client["SummerGames"]
+    return MongoClient(CONNECTION_STRING)["SummerGames"]
 
 ## Inserts into specified table. Format should be a list of dictionary.
 def insertManyIntoTable(tableName,data):
     db = get_database()
     table = db[tableName]
-    
-    template = getTemplate(tableName)
-    template_keys = list(template.keys())
-    input = []
-    for i in range(len(data)):
-        input.append({j:data[i][template_keys.index(j)] for j in template_keys})
+    c=1
+    cd=len(data)
+    for j in data:
+        template = getTemplate(tableName)
+        template_keys = list(template.keys())
+        for i in range(len(template_keys)):
+            temp_key =template_keys[i]
+            template[temp_key]=j[temp_key]
 
-    res = []
-    ## keyGen and check
-    for i in range(len(input)):
-        input[i]["key"]="".join(data[i])
-        if checkIfExists(table,input[i]["key"])==False:
-            res.append(input[i])
-    if len(res)>0:
-        table.insert_many(res)
+        template["key"]="".join(j.values())
         
-        #print("inserted "+str(len(res))+" records successfully.")
-
+        table.insert_one(template)
+        
+        print(str(c)+"/"+str(cd))
+        c+=1
+    ## keyGen and check
+    
+        
 ## Inserts into specified table. Format should be a list.
 def insertIntoTable(tableName,data):
     db = get_database()
@@ -55,7 +49,8 @@ def insertIntoTable(tableName,data):
     template = getTemplate(tableName)
     template_keys = list(template.keys())
     for i in range(len(template_keys)):
-        template[template_keys[i]]=data[i]
+        temp_key =template_keys[i]
+        template[temp_key]=data[temp_key]
     template["key"]="".join(data)
     ## keyGen and check
     if checkIfExists(table,template["key"]):
@@ -74,6 +69,10 @@ def checkIfExists(table,key):
             return True
     return False
     
+def readPickle(file):
+    with open(file, 'rb') as handle:
+        b = pickle.load(handle)
+    return b
 
 if __name__ == "__main__":
     ## Example use cases:
@@ -87,6 +86,9 @@ if __name__ == "__main__":
     
     # insertManyIntoTable("schedule",scrape.scrapeSchedule_niagaragames())
     # returnTableData("schedule")
-
+    data = readPickle("data.pickle")
+    
+    insertManyIntoTable("athletes",data)
+    #returnTableData("athletes")
     
     pass
