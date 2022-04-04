@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/BrockChatbot/static/css/main.a7bdc5cf.css",
-    "main.js": "/BrockChatbot/static/js/main.4378f1c3.js",
+    "main.js": "/BrockChatbot/static/js/main.d5e85198.js",
     "static/media/sgames.png": "/BrockChatbot/static/media/sgames.04b0c7de6f64c742d814.png",
     "static/media/brock.png": "/BrockChatbot/static/media/brock.18c0750cc81cf5c54ff3.png",
     "index.html": "/BrockChatbot/index.html",
     "main.a7bdc5cf.css.map": "/BrockChatbot/static/css/main.a7bdc5cf.css.map",
-    "main.4378f1c3.js.map": "/BrockChatbot/static/js/main.4378f1c3.js.map"
+    "main.d5e85198.js.map": "/BrockChatbot/static/js/main.d5e85198.js.map"
   },
   "entrypoints": [
     "static/css/main.a7bdc5cf.css",
-    "static/js/main.4378f1c3.js"
+    "static/js/main.d5e85198.js"
   ]
 }
