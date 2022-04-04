@@ -1,5 +1,9 @@
 import sched
 import requests,sys
+from requests_html import HTMLSession
+import pickle
+session = HTMLSession()
+
 from bs4 import BeautifulSoup
 import pathlib
 
@@ -7,10 +11,12 @@ WORKING_DIRECTORY = str(pathlib.Path().resolve())
 
 
 ## Returns the soup of a url
+
 def url2Soup(url):
-    page = requests.get(url)
-    page.encoding = 'UTF-8'
-    return BeautifulSoup(page.content, 'html.parser')
+    session = HTMLSession()
+    page = session.get(url)
+    page.html.render(sleep=3.5)
+    return BeautifulSoup(page.html.raw_html, 'html.parser')
 
 ## Returns the soup of an html file
 def file2Soup(fileLocation):
@@ -97,9 +103,81 @@ def live_countdown_update():
     count_down = [i.get_text() for i in table.find_all("span")]
     return count_down
 
+def getPlayerLinks(file):
+    soup = file2Soup_utf(WORKING_DIRECTORY+"\\backend\\"+file)
+    return ["https://cg2019.gems.pro/Result/"+link.get("href") for link in soup.findAll("a") if link.get("href") != None and "ShowPerson.aspx" in link.get("href")]
+
+
+def grabPlayerData(url):
+    try:
+        soup = url2Soup(url)
+        name = soup.find("span", id="txtPersonNameFML").getText()
+        cont = soup.find("span", id="txtContingent").getText()
+        if soup.find("span", id="txtHomeTown") != None:
+            hometown = soup.find("span", id="txtHomeTown").getText()
+        else:
+            hometown = "NA"
+        type = soup.find("span", id="txtParticipantTypeName").getText()
+        sport = soup.find("span", id="txtSportName").getText()
+
+
+        if soup.find("span", id="txtAge") != None:
+            age = soup.find("span", id="txtAge").getText()
+        else:
+            age = "NA"
+        if soup.find("span", id="txtHeight") != None:
+            height = soup.find("span", id="txtHeight").getText()
+        else:
+            height = "NA"
+        if soup.find("span", id="txtWeight") != None:
+            weight = soup.find("span", id="txtWeight").getText()
+        else:
+            weight = "NA"
+
+
+        return {"name":name,
+        "cont":cont,
+        "hometown":hometown,
+        "type":type,
+        "sport":sport,
+        "age":age,
+        "height":height,
+        "weight":weight
+        }
+    except:
+        pass
+
+def writeToPickle(data,file):
+    with open(file, 'wb') as handle:
+        pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+
+def readPickle(file):
+    with open(file, 'rb') as handle:
+        b = pickle.load(handle)
+    return b
 if __name__ == "__main__":
     ## Example use cases:
+
+    # players = getPlayerLinks("allAthletes.htm")
+    # print(len(players))
     
+    
+    # for player in players:
+    #     print(str(players.index(player)+1)+"/"+str(len(players)))
+    #     res = grabPlayerData(player)
+
+    #     try:
+    #         l = readPickle("data.pickle")
+    #     except:
+    #         l = []
+    #     l.append(res)
+    #     writeToPickle(l,"data.pickle")
+        
+    print(readPickle("data.pickle"))
+
+    
+    
+
     #scrape_general_info()
 
     #athlete_table = scrapeAthleteData_gemspro()
@@ -114,8 +192,8 @@ if __name__ == "__main__":
     #count_down = live_countdown_update()
     #print(count_down)
 
-    athletes = atheleteAndSportList()
-    print(athletes)
+    # athletes = atheleteAndSportList()
+    # print(athletes)
 
     #schedule = scrapeSchedule_niagaragames()
     #print(schedule)
