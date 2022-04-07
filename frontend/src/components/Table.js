@@ -69,7 +69,7 @@ const Table = (props) => {
                     row.cells.map((cell) => {
                       // Apply the cell props
                       return (
-                        <td {...cell.getCellProps()}>
+                        <td  className={props.type === "Athlete" ? "athlete" : "schedule"}{...cell.getCellProps()}>
                           {
                             // Render the cell contents
                             cell.render("Cell")

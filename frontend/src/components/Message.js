@@ -3,19 +3,69 @@ import React from "react";
 import Table from "./Table";
 
 const Message = (props) => {
+
+  var c = [{}]
+
+  // our columns based off of data type
+  if(props.type === "Athlete") {
+   c = [
+      {
+        Header: 'Athlete',
+        accessor: 'name', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Sport',
+        accessor: 'sport',
+      },
+      {
+        Header: 'Home',
+        accessor: "hometown"
+      },
+      {
+        Header: 'Height',
+        accessor: "height"
+      },
+      {
+        Header: 'Weight',
+        accessor: "weight"
+      },
+    ]
+  }
+
+  if(props.type === "Schedule") {
+    c = [
+      {
+        Header: 'Gender',
+        accessor: "gender"
+      },
+      {
+        Header: 'Sport',
+        accessor: "sport"
+      },
+      {
+         
+        Header: 'Time',
+        accessor: 'time', // accessor is the "key" in the data
+      },
+       {
+        Header: 'Location',
+        accessor: 'location',
+       },
+      
+       {
+         Header: 'Pool',
+         accessor: "pool"
+       },
+     ]
+   }
+  
+
     const columns = React.useMemo(
-        () => [
-          {
-            Header: 'Athlete',
-            accessor: 'athlete', // accessor is the "key" in the data
-          },
-          {
-            Header: 'Sport',
-            accessor: 'sport',
-          },
-        ],
+        () => c,
         []
       )
+
+  
 
  // once we get data then bot message is sent
   if (props.from === "bot") {
@@ -25,23 +75,13 @@ const Message = (props) => {
         <div className="bot-message">
           
           {props.message === "fetching..." ? (
-            <div className="loading">Searching</div>
+            <div className="loading"></div>
           ) : (
             <>
               {/* response + data */}
               {Array.isArray(props.message) ? (
                 <>
-                  {/* props.message.map((athlete, index) => {
-                    return (
-                      <>
-
-                        <li key={index}>
-                          {athlete.athlete} {athlete.sport}
-                        </li>
-                      </>
-                    );
-                  }) */}
-                  <Table columns={columns} data={props.message} />
+                  <Table columns={columns} data={props.message} type={props.type}/>
                 </>
               ) : (
                 props.message
