@@ -111,7 +111,7 @@ const Main = () => {
         setInput(true);
       }
 
-      if (message === "How can I help you today?") {
+      if (message === "What else can I help you with?") {
         setQuestions(initQuestions);
       }
       if (message === "Would you like to see Canada games socials? Or buy merch?") {
