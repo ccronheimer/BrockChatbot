@@ -23,6 +23,10 @@ const athletesRouter = require('./routes/athletes');
 // if we go to /athletes all athletes will load 
 app.use('/athletes', athletesRouter);
 
+const scheduleRouter = require('./routes/schedule');
+app.use('/schedule', scheduleRouter);
+
+
 app.listen(port, () => {
   // perform a database connection when server start
   console.log(`Server is running on port: ${port}`);

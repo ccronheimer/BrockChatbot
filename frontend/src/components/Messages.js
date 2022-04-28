@@ -15,7 +15,7 @@ const Messages = (props) => {
 
   
   const listMessages = messages.map(({ message, from, id }) => (
-    <Message key={id} message={message} from={from} />
+    <Message key={id} message={message} from={from} type={props.type} />
   ));
 
   return (

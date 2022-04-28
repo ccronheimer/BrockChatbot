@@ -9,17 +9,17 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 
 const Main = () => {
-  const [disable, setDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [canInput, setInput] = useState(false);
+  const [type, setType] = useState("");
 
   const [filteredResults, setFilteredResults] = useState([]);
 
   const initQuestions = [
-    "Today's Games",
-    "Schedule",
     "Find an athlete",
-    "Stats",
-    "Location",
+    "What is the schedule?",
+    "Who can I contact?",
+    "Find tickets",
   ];
 
   const initMessages = [
@@ -28,120 +28,206 @@ const Main = () => {
 
   const [list, setList] = useState(initMessages);
   const [questions, setQuestions] = useState(initQuestions);
-  
-  // we will have data pre loaded since it is not much
 
-  // add message
+  const [data, setData] = useState(null);
+  const [error, setError] = useState(null);
+
   function handleAdd(message, from, id) {
+    if (message === "Find an athlete") {
+      console.log("find an athlete");
+      fetchData("https://summer-games-bot.herokuapp.com/athletes");
+      setQuestions([
+        "Search by name",
+        "Search by sport",
+        "Search by home town",
+        "Go back",
+      ]);
+      setType("Athlete");
+    }
+
+    if (message === "What is the schedule?") {
+      console.log("find schedule");
+      fetchData("https://summer-games-bot.herokuapp.com/schedule");
+      setQuestions(["Search by location", "Search by sport", "Go back"]);
+      setType("Schedule");
+    }
+    // adds the message
     const newMessages = list.concat({ message, from, id });
     setList(newMessages);
   }
 
-  // ahtlete search
-  const { data, loading, error, refetch } = useFetch(
-    "http://localhost:3001/athletes"
-  );
-
- 
+  const fetchData = (url) => {
+    setLoading(true);
+    axios
+      .get(url)
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((err) => {
+        setError(err);
+      })
+      .finally(() => {
+        //   setLoading(false);
+      });
+  };
 
   const addData = (res) => {
-    setFilteredResults(res);   
-    
-  }
+    setFilteredResults(res);
+  };
 
- 
-  // we have the data
-  useEffect(() => {
+  const delay = () => {
+    setTimeout(() => {
+      console.log(filteredResults);
 
-    if (filteredResults.length !== 0) {
-      // update the list for answer
-      setTimeout(() => {
-        console.log(filteredResults);
-
-       // list.pop();
-        // get data 
-        // then go on to search
-        // data comes back filtered 
-        // then we add it to messages 
-        setInput(false);
-        setQuestions(initQuestions)
+      // list.pop();
+      // get data
+      // then go on to search
+      // data comes back filtered
+      // then we add it to messages
+      setInput(false);
+      setQuestions(initQuestions);
+      setLoading(false);
+      // not results
+      if (filteredResults.length === 0) {
+        handleAdd(
+          "Sorry, I could not find what you are looking for",
+          "bot",
+          uuidv4()
+        );
+      } else {
         handleAdd(filteredResults, "bot", uuidv4());
-        setDisabled(false);
+      }
+      // setDisabled(false);
 
+      //setDisabled(false);
+    }, 2000);
+  };
 
-        //setDisabled(false);
-      }, 2000);
-    } 
+  const botRespond = (message, isInput) => {
+    setTimeout(() => {
+      handleAdd(message, "bot", uuidv4());
+      setLoading(false);
+      if (isInput) {
+        setInput(true);
+      }
 
-   
-
-  }, [filteredResults]);
-
+      if (message === "What else can I help you with?") {
+        setQuestions(initQuestions);
+      }
+      if (message === "Would you like to see Canada games socials? Or buy merch?") {
+        setQuestions(["Buy merch", "Instagram", "Facebook", "Youtube", "Tiktok", "Twitter", "Go back"]);
+      }
+    }, 2000);
+  };
 
   // called when list is updated from user
   useEffect(() => {
-
     const thisMessage = list[list.length - 1];
 
     // check if the last question is from user
     if (thisMessage.from === "user") {
       console.log("bot is thinking");
 
-      // cases... 
+      // cases...
       if (thisMessage.message === "Find an athlete") {
-        handleAdd("Who are you looking for?", "bot", uuidv4());
-        refetch(); // fetch athlete data 
-       // setDisabled(true); // close chips open input
-        setQuestions(["Athlete Name", "Athlete Sport"])
-      } else if(thisMessage.message === "Athlete Name") {
-        handleAdd("Enter a name?", "bot", uuidv4());
-        // filter through names
-        setInput(true);
+        botRespond("Do you want to search by name or sport?", false);
+        //refetch(); // fetch athlete data
 
-
-      } else if(thisMessage.message === "Athlete Sport") {
-        
-        handleAdd("Enter a sport?", "bot", uuidv4());
-        setInput(true);
-
-        
-      }else {
-        
-        // received user input so find a answer
-
-        handleAdd("fetching...", "bot", "temp");
-        setDisabled(true);
-
-       
-
+        // setDisabled(true); // close chips open input
+      }
+      // filter through names
+      if (thisMessage.message === "Search by name") {
+        botRespond("Please enter a name", true);
+      }
+      if (thisMessage.message === "Search by sport") {
+        botRespond("Please enter a sport", true);
+      }
+      if (thisMessage.message === "Search by home town") {
+        botRespond("Please enter a hometown", true);
       }
 
+      // schedule
+      if (thisMessage.message === "What is the schedule?") {
+        botRespond("Do you want to search by location or sport", false);
+      }
 
+      if (thisMessage.message === "Search by sport") {
+        botRespond("Please enter a sport?", true);
+      }
+
+      if (thisMessage.message === "Search by location") {
+        botRespond("Please enter a location", true);
+      }
+      if (thisMessage.message === "Go back") {
+        botRespond("What else can I help you with?", false);
+      }
+      if (thisMessage.message === "Who can I contact?") {
+        botRespond("Would you like to see Canada games socials? Or buy merch?", false);
+      }
+
+      if (thisMessage.message === "Find tickets") {
+        botRespond("Here you go", false);
+        window.open("https://tournkey.app/dashboard/ticket/events/e9GN0yhYf5wRy5VCIa5HsQ", '_blank').focus();
+      }
+
+      if (thisMessage.message === "Buy merch") {
+        botRespond("Here you go", false);
+        window.open("https://shop.niagara2022games.ca/pages/contact-regattasport", '_blank').focus();
+      }
+
+      if (thisMessage.message === "Facebook") {
+        botRespond("Here you go", false);
+        window.open("https://www.facebook.com/2022CanadaGames/", '_blank').focus();
+      }
+
+      if (thisMessage.message === "Youtube") {
+        botRespond("Here you go", false);
+        window.open("https://www.youtube.com/channel/UCpWP6p7_J_aWuP8TpbTQJnA", '_blank').focus();
+      }
+      if (thisMessage.message === "Tiktok") {
+        botRespond("Here you go", false);
+        window.open("https://www.tiktok.com/@niagara2022", '_blank').focus();
+      }
+      if (thisMessage.message === "Twitter") {
+        botRespond("Here you go", false);
+        window.open("https://twitter.com/2022canadagames", '_blank').focus();
+      }
+      if (thisMessage.message === "Instagram") {
+        botRespond("Here you go", false);
+        window.open("https://www.instagram.com/2022canadagames/", '_blank').focus();
+      }
+
+      if (canInput) {
+        delay();
+      }
+
+      handleAdd("fetching...", "bot", "temp");
+
+      setLoading(true);
     }
 
-    console.log(thisMessage.message)
+    console.log(thisMessage.message);
   }, [list]);
 
-  // if (loading) return <div>loading...</div>;
-  // if (error) console.log(error);
+  if (error) return <>Error</>;
 
   return (
     <div className="container">
-      {/* chat header */}
       <div className="chat-header">
         <img src={SummerGamesImg} width={100} alt="Summer Games" />
         <img src={BrockImg} width={100} alt="Brock" />
       </div>
 
-      <Messages messages={list} />
-      {/* 
-      {data?.map((athlete) => {
-        return <div>{athlete.athlete}</div>;
-      })} */}
-      {/* <button onClick={refetch}>Refetch</button> */}
+      <Messages messages={list} type={type} />
 
-      {/* chat input */}
-      <ChatInput handleAdd={handleAdd} canInput={canInput} data={data} addData={addData} questions={questions} disable={disable} />
+      <ChatInput
+        handleAdd={handleAdd}
+        canInput={canInput}
+        data={data}
+        addData={addData}
+        questions={questions}
+        disable={loading}
+      />
     </div>
   );
 };

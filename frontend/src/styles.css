@@ -52,17 +52,16 @@ body {
 }
 
 .chat-input-container {
- 
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   border-top: 2px solid #bdbdbd42;
   padding-bottom: 10px;
- 
 }
 .loading {
   font-size: 14px;
+  font-weight: bold;
   font-family: sans-serif;
 }
 
@@ -70,15 +69,15 @@ body {
   overflow: hidden;
   display: inline-block;
   vertical-align: bottom;
-  -webkit-animation: ellipsis steps(4,end) 900ms infinite;      
-  animation: ellipsis steps(4,end) 900ms infinite;
+  -webkit-animation: ellipsis steps(4, end) 900ms infinite;
+  animation: ellipsis steps(4, end) 900ms infinite;
   content: "\2026"; /* ascii code for the ellipsis character */
   width: 0px;
 }
 
 @keyframes ellipsis {
   to {
-    width: 1.25em;    
+    width: 1.25em;
   }
 }
 
@@ -120,22 +119,81 @@ body {
   transform: translateY(2px);
 }
 
-
 .bot-message-container {
   display: flex;
   flex-direction: row;
- 
-  
 }
 
 .bot-profile {
   font-size: 40px;
-  
+}
+table, thead, tbody, th, td, tr { 
+  display: block; 
 }
 
+/* Hide table headers (but not display: none;, for accessibility) */
+thead tr { 
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+}
+
+tr { border-bottom: 1px solid #ccc; padding-bottom: 10px; padding: 8px;}
+
+td { 
+  /* Behave  like a "row" */
+  border: none;
+  padding: 2px;
+  position: relative;
+  padding-left: 100px; 
+  text-align: center;
+}
+
+td:before { 
+  /* Now like a table header */
+  position: absolute;
+  /* Top/left values mimic padding */
+  font-weight:bold;
+  left: 6px;
+  
+  padding-right: 20px; 
+  white-space: nowrap;
+}
+
+.athlete:nth-of-type(1):before {
+  content: "Name:";
+}
+.athlete:nth-of-type(2):before {
+  content: "Sport:";
+}
+.athlete:nth-of-type(3):before {
+  content: "Home:";
+}
+.athlete:nth-of-type(4):before {
+  content: "Height:";
+}
+.athlete:nth-of-type(5):before {
+  content: "Weight: ";
+}
+
+.schedule:nth-of-type(1):before {
+  content: "Gender:";
+}
+.schedule:nth-of-type(2):before {
+  content: "Sport:";
+}
+.schedule:nth-of-type(3):before {
+  content: "Time:";
+}
+.schedule:nth-of-type(4):before {
+  content: "Location:";
+}
+.schedule:nth-of-type(5):before {
+  content: "Pool:";
+}
 .bot-message {
   background-color: rgb(229, 229, 234);
-  
+
   font-size: 14px;
   max-width: 70%;
   overflow-wrap: break-word;
@@ -144,20 +202,19 @@ body {
   padding: 8px 10px;
   margin-left: 8px;
   font-family: sans-serif;
-  animation: example .25s;
+  animation: example 0.25s;
+  overflow-x: auto;
 }
 
 .bot-chips {
   margin: auto;
   width: 80%;
- 
+
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
-  
 
-margin-top: 6px;
-
+  margin-top: 6px;
 }
 .chip {
   padding: 8px 15px;
@@ -192,14 +249,15 @@ margin-top: 6px;
   font-family: sans-serif;
   font-weight: bold;
 }
-.chip:hover {background-color: #1b76ff}
+.chip:hover {
+  background-color: #1b76ff;
+}
 
 .chip:active {
   background-color: #1b76ff;
   box-shadow: none;
   transform: translateY(4px);
 }
-
 
 .message-user {
   background-color: #06f;
@@ -213,10 +271,8 @@ margin-top: 6px;
   margin-left: 8px;
   font-family: sans-serif;
   align-self: flex-end;
-  animation: example .25s;
+  animation: example 0.25s;
 }
-
-
 
 @keyframes example {
   from {
