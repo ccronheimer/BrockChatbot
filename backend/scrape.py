@@ -35,7 +35,7 @@ def grabEveryN_fromList(list,n):
 
 ## Remove all trailing spaces from list items and space unicodes
 def removeUnicodeSpace(list):
-    return [i.replace(u"\xa0",u"").strip() for i in list]
+    return [i.replace(u"\xa0",u"").replace("\n", " ").strip() for i in list]
 
 ## Returns scraped player+sport data from gemspro 2019 html for testing pruposes
 ## Scraped from https://cg2019.gems.pro/Result/ShowPerson_List.aspx?SetLanguage=en-CA
@@ -183,8 +183,8 @@ if __name__ == "__main__":
     #athlete_table = scrapeAthleteData_gemspro()
     #print(athlete_table)
 
-    #medal = medalStandings_nigaragames()
-    #print(medal)
+    medal = medalStandings_nigaragames()
+    print(medal)
 
     #compeititors = scrapeCompetitors_nigaragames()
     #print(compeititors)
