@@ -56,7 +56,7 @@ const Main = () => {
 
     if (message === "Medal standings") {
       console.log("find standings");
-      fetchData("http://localhost:3001/medals");
+      fetchData("https://summer-games-bot.herokuapp.com/medals");
       setQuestions(initQuestions);
       setType("Medal"); 
     }
