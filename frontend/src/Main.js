@@ -20,6 +20,8 @@ const Main = () => {
     "What is the schedule?",
     "Who can I contact?",
     "Find tickets",
+    "Medal standings",
+    "When do the games start?"
   ];
 
   const initMessages = [
@@ -51,6 +53,13 @@ const Main = () => {
       setQuestions(["Search by location", "Search by sport", "Go back"]);
       setType("Schedule");
     }
+
+    if (message === "Medal standings") {
+      console.log("find standings");
+      fetchData("http://localhost:3001/medals");
+      setQuestions(initQuestions);
+      setType("Medal"); 
+    }
     // adds the message
     const newMessages = list.concat({ message, from, id });
     setList(newMessages);
@@ -62,6 +71,13 @@ const Main = () => {
       .get(url)
       .then((response) => {
         setData(response.data);
+
+        if(url === "http://localhost:3001/medals") {
+          setMedals(response.data)
+
+        }
+        
+   
       })
       .catch((err) => {
         setError(err);
@@ -75,9 +91,23 @@ const Main = () => {
     setFilteredResults(res);
   };
 
+
+  const setMedals = (data) => {
+
+    setTimeout(() => {
+      setInput(false);
+      setQuestions(initQuestions);
+      setLoading(false);
+      handleAdd(data, "bot", uuidv4());
+      setType("Medal"); 
+    }, 1000);
+    //console.log(data)
+
+  }
+
+
   const delay = () => {
     setTimeout(() => {
-      console.log(filteredResults);
 
       // list.pop();
       // get data
@@ -100,7 +130,7 @@ const Main = () => {
       // setDisabled(false);
 
       //setDisabled(false);
-    }, 2000);
+    }, 1000);
   };
 
   const botRespond = (message, isInput) => {
@@ -117,7 +147,7 @@ const Main = () => {
       if (message === "Would you like to see Canada games socials? Or buy merch?") {
         setQuestions(["Buy merch", "Instagram", "Facebook", "Youtube", "Tiktok", "Twitter", "Go back"]);
       }
-    }, 2000);
+    }, 1000);
   };
 
   // called when list is updated from user
@@ -195,8 +225,15 @@ const Main = () => {
       if (thisMessage.message === "Instagram") {
         botRespond("Here you go", false);
         window.open("https://www.instagram.com/2022canadagames/", '_blank').focus();
-      }
+      } 
 
+      if (thisMessage.message === "When do the games start?") {
+        botRespond("starts Saturday, August 6 and ends on Sunday, August 21", false);
+       
+      } 
+
+
+      // added from search 
       if (canInput) {
         delay();
       }
@@ -206,7 +243,6 @@ const Main = () => {
       setLoading(true);
     }
 
-    console.log(thisMessage.message);
   }, [list]);
 
   if (error) return <>Error</>;

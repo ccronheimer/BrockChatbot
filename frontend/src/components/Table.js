@@ -68,14 +68,40 @@ const Table = (props) => {
                     // Loop over the rows cells
                     row.cells.map((cell) => {
                       // Apply the cell props
-                      return (
-                        <td  className={props.type === "Athlete" ? "athlete" : "schedule"}{...cell.getCellProps()}>
-                          {
-                            // Render the cell contents
-                            cell.render("Cell")
-                          }
-                        </td>
-                      );
+                      if(props.type === "Athlete") {
+                        return (
+                         
+                         <td  className="athlete" {...cell.getCellProps()}>
+                           {
+                             // Render the cell contents
+                             cell.render("Cell")
+                           }
+                         </td>
+                       );
+                      }
+                      if(props.type === "Schedule") {
+                        return (
+                         
+                         <td  className="schedule" {...cell.getCellProps()}>
+                           {
+                             // Render the cell contents
+                             cell.render("Cell")
+                           }
+                         </td>
+                       );
+                      }
+                      if(props.type === "Medal") {
+                        return (
+                         
+                         <td className="medal" {...cell.getCellProps()}>
+                           {
+                             // Render the cell contents
+                             cell.render("Cell")
+                           }
+                         </td>
+                       );
+                      }
+                     
                     })
                   }
                 </tr>

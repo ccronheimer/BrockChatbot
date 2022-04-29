@@ -26,6 +26,8 @@ app.use('/athletes', athletesRouter);
 const scheduleRouter = require('./routes/schedule');
 app.use('/schedule', scheduleRouter);
 
+const medalsRouter = require('./routes/medals');
+app.use('/medals', medalsRouter);
 
 app.listen(port, () => {
   // perform a database connection when server start

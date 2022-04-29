@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const athleteSchema = new Schema({
+const schedule = new Schema({
     time: { type: String, required: true },
     sport: { type: String, required: true}, 
     gender: { type: String, required: true}, 
@@ -15,7 +15,7 @@ const athleteSchema = new Schema({
     collection: 'schedule',
 });
 
-const Athlete = mongoose.model('schedule', athleteSchema);
+const Schedule = mongoose.model('schedule', schedule);
 
-module.exports = Athlete;
+module.exports = Schedule;
 

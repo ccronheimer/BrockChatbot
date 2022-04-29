@@ -58,13 +58,41 @@ const Message = (props) => {
        },
      ]
    }
+
+   if(props.type === "Medal") {
+    c = [
+      {
+        Header: 'Contingent',
+        accessor: "Contingent"
+      },
+      {
+        Header: 'Gold',
+        accessor: "Gold"
+      },
+      {
+         
+        Header: 'Silver',
+        accessor: 'Siver', // accessor is the "key" in the data
+      },
+       {
+        Header: 'Bronze',
+        accessor: 'Bronze',
+       },
+      
+       {
+         Header: 'Total',
+         accessor: "Total"
+       },
+     ]
+   }
   
 
     const columns = React.useMemo(
         () => c,
         []
       )
-
+    
+      console.log(props.type)
   
 
  // once we get data then bot message is sent

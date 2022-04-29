@@ -1,0 +1,93 @@
+[
+    {
+    "Contingent": "Quebec",
+    "Gold": "65",
+    "Siver": "41",
+    "Bronze": "40",
+    "Total": "146"
+    }, 
+     {
+    "Contingent": "Ontario",
+    "Gold": "18",
+    "Siver": "43",
+    "Bronze": "44",
+    "Total": "105"
+    }, 
+     {
+    "Contingent": "Alberta",
+    "Gold": "36",
+    "Siver": "33",
+    "Bronze": "31",
+    "Total": "100"
+    }, 
+     {
+    "Contingent": "British Columbia",
+    "Gold": "30",
+    "Siver": "28",
+    "Bronze": "29",
+    "Total": "87"
+    }, 
+     {
+    "Contingent": "Manitoba",
+    "Gold": "9",
+    "Siver": "7",
+    "Bronze": "9",
+    "Total": "25"
+    }, 
+     {
+    "Contingent": "Saskatchewan",
+    "Gold": "3",
+    "Siver": "3",
+    "Bronze": "11",
+    "Total": "17"
+    }, 
+     {
+    "Contingent": "Nova Scotia",
+    "Gold": "1",
+    "Siver": "6",
+    "Bronze": "4",
+    "Total": "11"
+    }, 
+     {
+    "Contingent": "New Brunswick",
+    "Gold": "1",
+    "Siver": "3",
+    "Bronze": "5",
+    "Total": "9"
+    }, 
+     {
+    "Contingent": "Newfoundland & Labrador",
+    "Gold": "1",
+    "Siver": "0",
+    "Bronze": "1",
+    "Total": "2"
+    }, 
+     {
+    "Contingent": "Prince Edward Island",
+    "Gold": "0",
+    "Siver": "1",
+    "Bronze": "1",
+    "Total": "2"
+    }, 
+       {
+    "Contingent": "Northwest Territories",
+    "Gold": "0",
+    "Siver": "0",
+    "Bronze": "1",
+    "Total": "1"
+    }, 
+      {
+    "Contingent": "Yukon",
+    "Gold": "0",
+    "Siver": "0",
+    "Bronze": "1",
+    "Total": "1"
+    },
+     {
+    "Contingent": "Nunavut",
+    "Gold": "0",
+    "Siver": "0",
+    "Bronze": "0",
+    "Total": "0"
+    }
+]
