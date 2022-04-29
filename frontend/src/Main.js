@@ -228,7 +228,7 @@ const Main = () => {
       } 
 
       if (thisMessage.message === "When do the games start?") {
-        botRespond("starts Saturday, August 6 and ends on Sunday, August 21", false);
+        botRespond("Starts Saturday, August 6 and ends on Sunday, August 21", false);
        
       } 
 
@@ -248,14 +248,17 @@ const Main = () => {
   if (error) return <>Error</>;
 
   return (
+    
     <div className="container">
       <div className="chat-header">
         <img src={SummerGamesImg} width={100} alt="Summer Games" />
         <img src={BrockImg} width={100} alt="Brock" />
       </div>
 
+     {/* Message container */}
       <Messages messages={list} type={type} />
 
+      {/* Chat input container */}
       <ChatInput
         handleAdd={handleAdd}
         canInput={canInput}
