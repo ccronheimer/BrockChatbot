@@ -72,7 +72,7 @@ const Main = () => {
       .then((response) => {
         setData(response.data);
 
-        if(url === "http://localhost:3001/medals") {
+        if(url === "https://summer-games-bot.herokuapp.com/medals") {
           setMedals(response.data)
 
         }
